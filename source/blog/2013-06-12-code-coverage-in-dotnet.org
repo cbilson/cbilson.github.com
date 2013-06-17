@@ -1,0 +1,10 @@
+#+TITLE: Code-Coverage-in-DotNet
+#+DATE: 2013-06-12
+#+SETUPFILE: ~/src/blog-stuff/octopress/source/setup.org
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES:
+#+JEKYLL_PUBLISHED: true
+
+* Abstract
+
+

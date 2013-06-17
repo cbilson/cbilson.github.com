@@ -4,6 +4,7 @@
 #+JEKYLL_LAYOUT: post
 #+JEKYLL_CATEGORIES: methods
 #+JEKYLL_PUBLISHED: true
+#+OPTIONS: toc:nil, num:nil
 
 * Abstract
 

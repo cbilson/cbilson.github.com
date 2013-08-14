@@ -1,0 +1,194 @@
+#+OPTIONS: toc:nil H:10
+#+DATE: 2013-03-15
+#+LaTeX_HEADER: \usepackage{mycv}
+
+#+TITLE: Chris Bilson
+
+* Skills
+  - Leading teams and working effectively with product owners
+  - Agile methods and the engineering practices that support them
+  - C#, F#, and the .NET platform
+  - Clojure, java, jruby, and the JVM
+  - C, C++, ML, OCaml, Assembly Language
+  - javascript, jQuery, Browser based software
+  - emacs or vim, I use both
+
+* Experience
+
+** [[http://milliman.com/][Milliman]], Seattle, WA, 9/2010 - Present
+   - Developed new features for Milliman's MG-ALFA desktop application
+     and calc engine (WPF, C#, C++)
+   - Formed new team to develop web based job management system for
+     running and managing very large distributed jobs on 10's of
+     thousands of cores using Windows Azure (azure, asp.net mvc, c#,
+     knockout.js, coffeescript.)
+
+** [[http://paraport.com/][Parametric]], Seattle, WA, 7/2010 - 9/2010
+   - Maintained legacy trading and customer account management
+     applications (winforms, c#)
+
+** [[http://russell.com/][Russell Investments]], Tacoma, WA, 7/2005 - 7/2010
+   - Developed systems for analyzing equity models and building emulated portfolios
+   - Assisted in developing derivative and FX portfolio management and hedging systems
+   - Worked with other senior developers to develop an architecture for
+     Russell, using [[http://castleproject.org/monorail/][monorail]], jquery, and [[http://nhforge.org/][NHibernate]].
+   - Mentored teammates in agile engineering practices, such as test
+     driven development, continuous integration, one-step builds, and
+     getting more cross-functional with our testers
+   - Received "Russell Innovtion Award" in 2007 for work on Retirement Distribution Funds.
+
+** [[http://snsc.com/][Security National Servicing Corp.]], Rancho Cordova, CA, 4 - 7/2005
+   - Developed contact management application for getting broker price
+     opinions on homes with distressed mortgages
+   - Introduced the team to test driven development
+   - All development was on rich clients, built using [[http://www.lhotka.net/cslanet/][CSLA]].
+
+** [[http://cudl.com/][Credit Union Direct Lending]], Rancho Cordova, CA, 9/2004 - 4/2005
+   - Developed asp.net web application for online auto loan application and approval
+   - Visual Basic
+   - Javascript
+   - Introduced the team to test driven development
+
+** [[http://stategov.ciber.com/law/][Ciber, Law and Justice Division]], Sacramento, CA, 4/2002 - 9/2004
+   - Developed a criminal case management system for district attorneys
+     - Started working on existing ActiveX version of this product
+     - Replaced ActiveX with asp.net and hand coded javascript components
+   - Built a team for our new .NET product
+   - Mentored team on TDD and continuous integration
+
+** [[http://salu.com/][Salu]] / [[http://skinstore.com/][Skinstore]], Granite Bay, CA, 12/2000 - 4/2002
+   - Developed a prescription writing application for physicians, for the Pocket PC platform
+   - Helped maintain an ecommerce site for skin care products, skinstore.com
+     - Helped get started moving these sites from perlCGI and asp classic to asp.net
+
+** [[http://web.archive.org/web/20010405141620/http://www.atlantes.com/][Atlantes]], Menlo Park, CA, 4/2000 - 11/2000
+   - Developed a web based system for tracking packages and deliveries to
+     secure boxes, using perl, [[http://www.masonhq.com/][HTML::Mason]], and [[http://www.oracle.com/technology/products/berkeley-db/index.html][BerkeleyDB]].
+   - Used perl's package testing system for extensive automated unit tests
+   - Worked with team to maintain automated, nightly, one-step build / integration.
+
+** [[http://www.am.necel.com/][NEC]], Roseville, CA, 6/1999 - 4/2000
+   - Developed a system for tracking semi-conductor wafers through an automated fab
+     - Application was built using MFC
+     - Application was load-balanced and integrated into EAB using [[http://www.tibco.com/software/messaging/rendezvous/default.jsp][Tibco Rendezvous]] messaging middleware.
+
+** [[http://www.egovinc.com/][AtPac]], Grass Valley, CA, 11/1998 - 6/1999
+   - Developed a web application to automate finding names on scanned title documents
+   - Developed web application to maintain schedule for county boards of supervisors
+   - Worked in ASP classic, VB, and C (COM/ATL)
+
+** [[http://web.archive.org/web/19980218210117/www.evercom.com.tw/beyoung/html/by00.htm][Beyoung]] (now [[http://www.reallusion.com/][Reallusion]]), Hsintien, Taiwan, 4/1997 - 11/1998
+   - Developed educational games for children learning foreign (i.e., not
+     Chinese) languages
+   - Applications were built using VB3/5, with extensive use of VBXs
+     and ActiveX controls written in C
+   - Started migrating some of our applications to work on the web
+
+** Pioneer Technology, Taipei, Taiwan, 4/1995 - 4/1997
+   - Developed factory automation and job management
+     software for textile and plastic injection molding factories
+   - Microsoft Access
+   - Visual Basic
+
+** Hong Yeh Enterprises, Sanchung, Taiwan, 6/1994 - 4/1995
+   - Developed 32-bit extended mode DOS controller software for CNC wire
+     forming machinery
+   - C, Assembly Language
+   - PharLap Extender
+
+** X-Point LTD., Bangkok, Thailand, 4/1993 - 1/1994
+   - Installed and customized point of sale and inventory control systems
+     for department stores
+   - clipper
+   - dbase
+
+** Shiny Plastics LTD., Hsin-chuang, Taiwan, 9/1992 - 1/1993
+   - Developed document management system for ISO-9000 certification
+     process
+   - clipper
+   - dbase
+   - Microsoft Office automation
+
+* Personal Projects / Activities
+
+** [[http://github.com/seajure][Seajure]] (Seattle Clojure User's Group)
+   - Actively involved in local clojure community.
+
+** [[http://altnetseattle.org/][Seattle ALT.NET Conference 3]], 4/9-11/2010
+   - Organizing workshops for developers on topics ranging from Agile Development
+     practices to functional programming and dynamic languages
+   - Holding workshop on Test Driven Development
+
+** [[http://www.boisecodecamp.org/][Boise Code Camp]], 3/27-28/2010
+   - Talk: Powershell for Productive Programmers
+
+** [[http://github.com/altnetseattle/olympia_software_craftsmanship_workshop/tree/master][Olympia Software Craftsmanship Workshop]], 6/6/2009
+   - Working with several other developers to run a day-long workshop for
+     developers, in Olympia, WA, covering:
+     - TDD
+     - User Stories
+     - Sprint vs. Product Backlog
+     - Migrating legacy applications
+     - Some other agile techns.
+
+** [[http://www.boisecodecamp.org/][Boise Code Camp]], 3/28-29/20
+   - Gave talk on F# for "real" applications, covering how to use F# for
+     more than just the canonical examples (i.e., currying the  operator
+     into a function that takes one argument and always adds 5) and
+     showing how it works great for WPF and web applications as well.
+   - Gave talk on Spark view engine, and using it to generate javascript
+     functions for generating HTML bound to models. Talked about how we
+     at Russell were dealing more and more with complex controller logic
+     in javascript and how client side view rendering technology like
+     Spark helped us move to client side controllers and JSON actions for
+     our web-apps.
+
+** [[http://altnetseattle.pbwiki.com/][Seattle ALT.NET Conference 2]], 2/27-3/1/2009
+   - Helped organize and run wiki for the conference
+   - Worked with other organizers to keep things running smoothly
+
+** [[http://www.ssdotnet.org/][South Sound .NET Users Group]]
+   - Gave several talks:
+     - Monorail, 9/2005
+     - TDD, 4/2006
+     - Powershell For Productive Programmers, 1/2010
+     - Several others
+
+** [[http://www.sacnetug.org/][Sacramento .NET Users Group]]
+   - Together with Manoj Keechilot, started this group in 2003, left
+     when I moved to Washington in 2005.
+
+* Education
+
+** Coursera
+   - Artificial Intelligence
+   - Machine Learning
+   - Algorithms - Design and Analysis, I and II
+   - Think Again - How to Reason and Argue
+   - Linear and Discrete Optimization
+   - Natural Language Processing
+   - Financial Engineering and Risk Management
+
+** UC Davis Extension, 1/2000 - 6/2001
+   - Database design
+   - Software Architecture
+
+** Sierra College, 6/1989 - 1/1992
+   - Head Start Program while Attending High School:
+     - calculus
+     - C
+     - Pascal
+
+* Interests
+  - Functional Programming: clojure, f#, ML
+  - Automation: build automation, tools, CI/Continuous-Deployment
+  - Finance and How Businesses Work: I enjoy working with
+    business experts and learning the nuts and bolts of how different
+    businesses work.
+  - Language Hunting, Chinese Language and culture. 中文讀寫應該還算不
+    錯
+
+* Contact
+  - E-Mail: [[mailto:cbilson@pobox.com][cbilson@pobox.com]]
+  - Phone: 253/234-4242
+  - Github: [[http://github.com/cbilson/][github.com/cbilson]]

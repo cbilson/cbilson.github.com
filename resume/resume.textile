@@ -1,0 +1,127 @@
+**Chris Bilson**
+__253/234-4242__
+__"cbilson@pobox.com":mailto:cbilson@pobox.com__
+__"github.com/cbilson":http://github.com/cbilson__
+
+h1. Skills
+
+* Leading teams and working effectively with product owners
+* Agile methodologies and the engineering practices that support them
+* C# and the .NET platform
+* javascript, jQuery, and other in-browser programming techniques
+
+h1. Experience
+
+h2. "Russell Investments":http://russell.com/, 7/2005 - Present
+
+* Developed systems for analyzing equity models and building emulated portfolios
+* Assisted in developing derivative and FX portfolio management and hedging systems
+* Worked with other senior developers to develop an architecture for Russell, using "monorail":http://castleproject.org/monorail/, "jquery":http://jquery.com/, and "nhibernate":http://www.nhforge.org/
+* Mentored teammates in agile engineering practices, such as test driven development, continuous integration, one-step builds, and getting more cross-functional with our testers
+
+h2. "Security National Servicing Corp.":http://snsc.com/, 4 - 7/2005
+
+* Developed contact management application for getting broker price opinions on homes with distressed mortgages
+* Introduced the team to test driven development
+* All development was on rich clients, built using "CSLA":http://www.lhotka.net/cslanet/
+
+h2. "Credit Union Direct Lending":http://cudl.com, 9/2004 - 4/2005
+
+* Developed asp.net web application for online auto loan application and approval
+* Introduced the team to test driven development
+
+h2. "Ciber, Law and Justice Division":http://stategov.ciber.com/law/, 4/2002 - 9/2004
+
+* Developed a criminal case management system for district attorneys
+** Worked on COM+ version of this product
+** Replaced COM+ and ActiveX with asp.net and hand coded javascript components
+* Built a team for our new .NET product
+* Mentored team on TDD and continuous integration
+
+h2. "Salu Inc.":http://salu.com/ / "Skinstore.com":http://skinstore.com/, 12/2000 - 4/2002
+
+* Developed a prescription writing application for doctors, for the pocket pc platform
+* Helped maintain an ecommerce site for skin care products, skinstore.com
+** Helped get started moving these sites from perl+CGI and asp classic to asp.net
+
+h2. "Atlantes":http://web.archive.org/web/20010405141620/http://www.atlantes.com/, 4/2000 - 11/2000
+
+* Developed a web based system for tracking packages and deliveries to secure boxes, using perl, "HTML::Mason":http://www.masonhq.com/, and "BerkeleyDB":http://www.oracle.com/technology/products/berkeley-db/index.html
+* Used perl's package testing system for extensive automated unit tests
+* Worked with team to maintain automated, nightly, one-step build / integration.
+
+h2. "NEC":http://www.am.necel.com/, 6/1999 - 4/2000
+
+* Developed a system for tracking semi-conductor wafers through an automated fab
+** Application was built using "MFC":http://www.tibco.com/software/messaging/rendezvous/default.jsp
+** Application was load-balanced and integrated into EAB using "Tibco Rendezvous":http://www.tibco.com/software/messaging/rendezvous/default.jsp messaging middleware.
+
+h2. "AtPac":http://www.egovinc.com/, 11/1998 - 6/1999
+
+* Developed a web application to automate finding names on scanned title documents
+* Developed web application to maintain schedule for county boards of supervisors
+* Worked in ASP classic, VB, and C++ (COM/ATL)
+
+h2. "Beyoung":http://web.archive.org/web/19980218210117/www.evercom.com.tw/beyoung/html/by00.htm (now "Reallusion":http://www.reallusion.com/), 4/1997 - 11/1998
+
+* Developed educational games for children learning foreign languages
+** Applications were built using VB3/5, with extensive use of ActiveX controls written in C++
+** Started migrating some of our applications to work on the web
+* 3:1 Artist:Developer ratio, content is king
+
+h2. Pioneer Technology, 4/1995 - 4/1997
+
+* Developed access/vb-forms factory automation and job management software for textile and plastic injection molding factories
+
+h2. Hong Yeh Enterprises, 6/1994 - 4/1995
+
+* Developed 32-bit extended mode DOS controller software for CNC wire forming machinery
+
+h2. X-Point LTD., 4/1993 - 1/1994
+
+* Installed and customized point of sale and inventory control systems for department stores, written in clipper and dbase
+
+h2. Shiny Plastics LTD., 9/1992 - 1/1993
+
+* Developed document management system for ISO-9000 certification process, using clipper, dbase and office automation
+
+h1. Personal Projects / Activities
+
+h2. "Olympia Software Craftsmanship Workshop":http://github.com/altnetseattle/olympia_software_craftsmanship_workshop/tree/master, (planned for) 6/6/2009 
+
+* Working with several other developers to run a day-long workshop for developers, in Olympia, WA, covering:
+** TDD
+** User Stories
+** Sprint vs. Product Backlog
+** Migrating legacy applications
+** Some other agile techniques.
+
+h2. "Boise Code Camp":http://www.boisecodecamp.org/, 3/28-29/2009
+
+* Gave talk on F# for real applications
+* Gave talk on Spark view engine, and using it to generate javascript functions for generating HTML bound to models
+
+h2. "Seattle ALT.NET Conference 2":http://altnetseattle.pbwiki.com/, 2/27-3/1/2009
+
+* Helped organize and run wiki for the conference
+
+h2. "South Sound .NET Users Group":http://www.ssdotnet.org/
+
+* Gave several talks:
+** Monorail, 9/2005
+** TDD, 4/2006
+** Several others
+
+h2. "Sacramento .NET Users Group":http://www.sacnetug.org/
+
+* Together with Manoj Keechilot, started this group in 2003, left when I moved to Washington in 2005.
+
+h1. Education
+
+h2. UC Davis Extension, 1/2000 - 6/2001
+
+Studied database design and software architecture
+
+h2. Sierra College, 6/1989 - 1/1992
+
+Took calculus while in high school, as well as C and Pascal programming classes

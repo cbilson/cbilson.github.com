@@ -1,0 +1,324 @@
+#+TITLE: Research Day
+#+DATE: 2013-06-12
+#+SETUPFILE: ~/src/blog-stuff/blog/setup.org
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES: methods
+#+JEKYLL_PUBLISHED: true
+#+JEKYLL_commentIssueId: 1
+#+OPTIONS: toc:nil, num:nil
+
+* Abstract
+
+  "Research Day" is a time when software developers stop working on
+  features and spend time trying to learn things that will help improve
+  their work in the future. This can help teams learn, innovate, and
+  break into system-thinking. In this post I discuss some things
+  I've found that work and some things that don't.
+
+  {{{more}}}
+
+* Overview
+
+  The idea of having a "Research Day," "[[http://www.nytimes.com/2007/10/21/jobs/21pre.html?_r%3D0][20% Time]]," "[[http://www.fastcodesign.com/1663137/how-3m-gave-everyone-days-off-and-created-an-innovation-dynamo][15% Time]]," or other
+  mechanisms for developers to break away from their day to day tasks
+  and change modes of thinking is nothing new. Google, for example,
+  famously uses 20% time both as a [[http://computer.howstuffworks.com/googleplex3.htm][benefit with which to attract talent]]
+  and as a way to [[http://www.eweek.com/c/a/IT-Infrastructure/Top-20-Percent-Projects-at-Google/][get innovative new ideas out of their people]].
+
+  I've personally had some experience with things like this and came to
+  the conclusion that, with a little discipline and structure, Research
+  Day can be adapted to most businesses and become essential to a highly
+  functioning team.
+
+* Things That Don't Work
+
+  Here are some of the problems/myths I have found that detract from
+  the value of Research Day.
+
+** You Are Not Google
+
+   ...unless you actually _are_ google, in which case disregard that.
+
+   To the rest of you: observe Google's mission statement: [[http://investor.google.com/corporate/faq.html#toc-mission]["Organize
+   the World's Information]]."  In the "Information Age" it's hard to
+   imagine anything productive you could do with a computer that
+   wouldn't further that goal.
+
+   Chances are your company's mission statement is narrower than
+   that. You should probably focus on things that are actually in line
+   with *your* company's mission. If you are not quite sure how to
+   connect the thing you want to do to your company's mission in [[http://www.mindtools.com/pages/article/newTMC_5W.htm][5 Whys]],
+   then it's probably not a great work research day project. By all
+   means, still research it, just on your own time.
+
+   So if you were planning on writing the next great rails view engine
+   and you work in a place that does nothing but .NET WPF applications,
+   you might want to choose something else to research. It's important to
+   be able to demonstrate the value of the work you are doing all the
+   time, but especially when what you are doing might not appear overtly
+   productive to other people you work with.
+
+   Research stuff that matters.
+
+** If You Don't Produce Anything, It's Not Research
+
+   Research is a product - some*thing* produced. If you don't produce
+   anything, then, by definition, it's not research.
+
+   I've personally had days when I did "Research Day" and had no output -
+   not even an e-mail explaining what I'd found to my teammates. If
+   pressed, my excuse might have been something like, "well...I realized
+   that this «whatever» isn't a great fit for what we are doing..." I
+   will never get those days back. Just writing down your findings is the
+   difference between a productive but negative research day and a
+   complete waste of time and money. Why wasn't «whatever» a bad fit? Is
+   whatever made «whatever» a bad fit still valid? How will we know if we
+   don't produce something that says what basis we made these
+   judgments on.
+
+   On my last team we kind of settled on the idea of writing up our
+   findings in a Research-Paper-like format (like I am trying to do here,
+   for this blog post.) I think on that team, we generally valued the
+   formal, academic feeling that gave and we were big into arguing about
+   stuff, so trying to clearly state the case for what you concluded from
+   your research was important to us.
+
+   That said, I wouldn't claim that we _always_ wrote up the results of
+   our research. It's not always appropriate for every topic and
+   sometimes just having code that clearly shows something is
+   better.
+
+   But generally, I'd say you need to have some written language results
+   for it to be research day - even an email summary or a README to go
+   along with any code you wrote. You are saving the code you wrote, right?
+
+** Don't Work Production Code Into Research
+
+   This is a tough one. It's easy to fall into thinking that if you do
+   your research work in your production code it will be more likely to
+   lead to something valuable that you can use right away when you go
+   back to \not Research day.
+
+   I don't think that's research. That's hacking, working, spiking
+   (not really, but that's what some people think...topic for another
+   time), or something, but it's not research. You aren't stepping
+   outside your day-to-day work. You're not getting a new
+   perspective. You're not considering a subject in isolation from all
+   the stuff you already have. It's too easy to confuse a systemic
+   problem in your day-to-day work for a factor in the thing you are
+   trying to research.
+
+   For example, let's say you want to research how to compile [[http://lesscss.org/][less]] to
+   CSS in an ASP.NET MVC application. There are a lot of options, or
+   you could build something yourself. You should probably write some
+   sample code and write up some conclusion with an argument for and
+   against each of the various choices. Sounds like a busy day.
+
+   If you start in your production code, you might spend 5 minutes
+   getting all your pages to use a new URL for their CSS and then turn
+   around and spend (read: waste) another 55 minutes figuring out why the
+   login page has some weird CSS quirk that turns out to be a bug that
+   you write a card about (10 more minutes.)
+
+   Say that only happens with one of the less to CSS engines you look
+   at. Would you incorporate this into your results? Is it a problem
+   with the less to CSS component? Even if you were careful, would it
+   be easy to accidentally incorporate bias against the less to CSS
+   component in your conclusion? Is it the thing you are trying to
+   evaluate that is wrong, or the system you are evaluating it in?
+   Also, remember, you just wasted 75 minutes you could have used more
+   productively exploring all the options or the other choices of less
+   to CSS engine.
+
+   Better to start with a simple example project that just demonstrates
+   the thing you are researching.
+
+   Another problem you might run into is that the research becomes
+   stale - something in the production code changed in the year since you
+   did the research and now it no longer compiles, or no one can remember
+   how we used to do something that the code you wrote is doing - we
+   can't tell if it's an important part of the research or just
+   noise. Research code that has too much production code in it is more
+   like a branch than clean, reproducible research, and has all the
+   maintenance burden of maintaining a branch.
+
+   If you write code as part of your research, I would encourage you to
+   start with a completely new, clean project, re-using as little
+   production code as possible (like ideally: NONE), and definitely not
+   polluting your production code with research.
+
+** Don't Research if You Don't Have a Good Topic
+
+   On my last team, we didn't do Research Day every week - not even
+   close. I think we did a good job of being pragmatic and only using
+   the time when we had legitimate things to research. I think the real
+   trick is having an abstract. If you can say something compelling
+   about what you want to research and what kind of results you hope to
+   see in a short, pithy abstract, I think you're onto something.
+
+   Some teams use research as a synonym for slack. I think this works
+   in the sense of "important but not urgent," but I find that a lot
+   of people don't really _get_ slack and think of it as waste or goof
+   off time. If you are sure your team is using a definition like
+   [[http://www.jamesshore.com/Blog/Slack%2520and%2520Scheduling%2520in%2520XP.html][this]], I think it's ok.
+
+* What Does Work
+
+  Here are some things I've seen that worked:
+
+** Have One Repository For All Your Research
+
+   It's a lot easier to find research if it's all in one place. On one
+   team I was on, we tried using different git repos for each research
+   project and we found that made it hard to find things
+   sometimes. Better to have it all in one repo you can grep through
+   that a bunch of repos to clone and look through.
+
+** Make Research Day All-Day
+
+   When I first started on my last team, we were only doing research day
+   for half the day. We had a team lunch and I believe the original idea
+   was that you would share the results of your research with your
+   teammates over lunch.
+
+   At some point we were able to show that Research Day was a benefit to
+   the business and we got permission to extend Research Day to a full
+   day.
+
+   I found that half-day research was really superficial. I couldn't
+   afford take the time to really try anything more than reading
+   about something and maybe trying a couple of really simple
+   experiments, and then only if I was already semi-familiar with the
+   topic I was researching beforehand.
+
+   When we switched to full-day, I was able to go a lot deeper and be
+   more effective.
+
+** Do Research Day on Friday
+
+   It's the end of the week and you are ready for something different.
+
+** Do Research Day on not-Friday
+
+   You've just spent 4 days wallowing in your problems and they won't be
+   that easy to forget.
+
+   Plus Friday's tend to run a little short, which contributes to the
+   feeling that research day is goof-off time.
+
+   Come Monday, is anyone going to remember what you said you were going to
+   research and hold you accountable for not producing anything?
+
+   I think I prefer Monday Research Day, but Friday would be my
+   second choice. I am not sure why, but Research Day in the middle
+   of the week sounds like it would break your flow too much. Maybe
+   that would be a good thing? I don't know.
+
+** Outline as You Go
+
+   Getting back to the format of the research output, as I mentioned I
+   am partial to research paper style. To do this, I start by writing an
+   abstract, then an outline. I make a go/no-go decision after
+   this. Would I want to read this if I was one of my teammates? Would I
+   want to pay for this if I was a shareholder in my company? Would a
+   customer pay for it?
+
+   As I go, I fill in the outline. I try not to write too much - just
+   some hooks to fill in later. I end up deleting a lot, so writing too
+   much ahead of time is just typing practice, not research.
+
+   In the past, when I've waited until the end of the day to write stuff
+   up, it doesn't turn out well. I am pressed for time. Usually you end
+   up working on code samples or finding new things right up till it's
+   time to leave, so the final output is rushed and unplanned. Much
+   better to have a plan, find out as much as possible about what you
+   set out to find out about, and have something to show for it in the
+   end.
+
+** Talk to Your Teammates Before and After
+
+   This is akin to presenting a paper at a conference: your teammates
+   can ask questions, learn, and we can all get an idea of what was
+   missed in the research (maybe giving us ideas for future research.
+
+   Personally, nothing beats going out for beers on Friday after a
+   Research Day and talking to your teammates about what you found -
+   maybe not formal, but you get a different level of engagement that
+   way. Every team is different - some teams actually don't drink beer!
+   In those cases, adaptations can be made to accommodate - go out for
+   coffee maybe?
+
+* Conclusion
+
+  At the end of the day, Research Days are a way for a team to
+  learn. There are other ways of course, but they often lack the rigor
+  and discipline you can get from Research Day.
+
+  Using knowledge the team gets from research as opposed to ad-hoc blog
+  reading, finding answers on stack overflow, or a lot of other ways
+  developers typically learn gives me the same feeling as using
+  production code that has been tested and well designed vs. something
+  someone found in a gist some evening while being late for dinner.
+
+* Further Research
+
+  You can find more ideas for organizing research days here:
+
+ - [[http://www.jamesshore.com/Agile-Book/slack.html][James Shore on Slack]]
+ - [[http://www.fastcodesign.com/1663137/how-3m-gave-everyone-days-off-and-created-an-innovation-dynamo][How 3M Gave Everyone Days Off and Created an Innovation Dynamo]]
+ - [[http://www.assemblymag.com/articles/87753-lean-manufacturing-the-abcs-of-a3-reports][The ABCs of A3]] - maybe an alternative to research-paper-style
+   presentation of findings?
+ - [[http://a3thinking.com/whatis.html][More A3 Stuff]]
+ - [[http://spectrum.ieee.org/podcast/at-work/tech-careers/telecommuting-and-yahoos-desperate-need-for-innovation][IEEE Podcast Interview with Steven Cherry]] - ostensibly about
+   telecommuting, but he also talks a about innovation
+ - [[http://www.thetakeaway.org/2013/feb/27/pros-and-cons-telecommuting/][The Pros and Cons of Telecommuting]] - More Steven Cherry stuff. I
+   find this guy kind of interesting.
+ - [[http://www.ere.net/2013/02/26/how-yahoos-decision-to-stop-telecommuting-will-increase-innovation/][How Yahoo's Decision to Stop Telecommuting Will Increase
+   Innovation]] - OK, last Steven Cherry link...
+
+** Writing Papers
+
+   Being mostly self-educated, I had *read* a lot of papers but never
+   written any until I started using them in Research Day. If you are
+   like me, you might find the following links useful:
+
+   - [[http://www.wikihow.com/Write-a-Research-Paper][How to Write a Research Paper]]
+   - [[http://research.microsoft.com/en-us/um/people/simonpj/papers/giving-a-talk/writing-a-paper-slides.pdf][How to Write a Great Research Paper]] - slides from a talk by
+     Simon Peyton Jones, one of my nerd heros.
+
+     Additionally, I get a lot of bang-for-the-buck out of writing in
+     emacs, with org-mode. It has a lot of features to make it easy to
+     write good looking documents, with colorized code blocks (that you can
+     even execute inside the document!), latex, and other fanciness. It's
+     also great at outlining and building up the structure of a document
+     and managing tasks related to your research inside the document. I
+     could go on, but won't. If you're interested, check out some of these
+     links:
+
+   - [[http://tincman.wordpress.com/2011/01/04/research-paper-management-with-emacs-org-mode-and-reftex/][Research Paper Management with Emacs, org-mode and RefTeX]]
+   - [[http://stackoverflow.com/questions/10864824/organizing-my-papers-in-org-mode][Organizing my papers in org-mode]]
+   - [[http://orgmode.org/worg/org-contrib/babel/uses.html][Source Code Blocks: Uses]]
+   - [[http://web.warwick.ac.uk/statsdept/user2011/TalkSlides/Contributed/16Aug_1115_FocusI_4-ReportingWorkflows_3-Leha.pdf][The Emacs Org-mode - Reproducible Research and Beyond]]
+   - [[https://www.coursera.org/course/thinkagain][Think Again - How to Reason and Argue]] - I really enjoyed this
+     Coursera course and found it helped me improve my ability to
+     make a point in my research.
+
+** Numbers
+
+   While I remain convinced Research Day is an important practice, I've
+   never actually measured this. It would be really interested to hear
+   from anyone that has any work that shows measurable value in Research
+   Day, outside of companies like Google and examples like the well
+   worn post it example.
+
+** Ad-Hoc Research Day
+
+   Another idea I am interested in is making Research Day an ad-hoc
+   thing. How would you manage this and make sure it didn't get out of
+   control? Would it just be one of those "trust us" kind of things? I
+   think some teams could pull this off.
+
+   This seems like it could be one of those lean things where
+   efficiencies are realized by doing the work just in time, right
+   before it's needed. Since research kind of spoil over time, this
+   might be a good technique to try.

@@ -24,16 +24,13 @@
       $("#comments").append("<div class='comment'><div class='commentheader'><div class='commentgravatar'>"
                                  + '<img src="' + cavatarlink + '" alt="" width="20" height="20">'
                                  + "</div><a class='commentuser' href=\""+ cuserlink + "\">"
-                                 + cuser + "</a><a class='commentdate' href=\"" + clink + "\">"
-                                 + cdate + "</a></div><div class='commentbody'>" + cbody + "</div></div>");
+                                 + cuser + "</a> on <a class='commentdate' href=\"" + clink + "\">"
+                                 + cdate + "</a> said:</div><div class='commentbody'>" + cbody + "</div></div>");
     }
   }
 
-  $.ajax("https://api.github.com/repos/cbilson/cbilson.github.com/issues/{{page.commentIssueId}}/comments", {
-    headers: {Accept: "application/vnd.github.full+json"},
-    dataType: "json",
-    success: function(msg){
-      loadComments(msg);
-   }
-  });
+  $.ajax({url:'https://api.github.com/repos/cbilson/cbilson.github.com/issues/{{page.commentIssueId}}/comments',
+          headers: {Accept: "application/vnd.github.full+json"},
+          type: "json",
+          success: loadComments});
 </script>

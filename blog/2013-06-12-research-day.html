@@ -643,8 +643,6 @@ might be a good technique to try.
       
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://cbilson.github.io//blog/2013-06-12-research-day.html" data-via="cbilson" data-counturl="http://cbilson.github.io//blog/2013-06-12-research-day.html" >Tweet</a>
-  
   
   <div class="g-plusone" data-size="medium"></div>
   
@@ -654,6 +652,8 @@ might be a good technique to try.
       
       <p class="meta">
         
+        
+        <a class="basic-alignment right" href="/blog/2013-08-16-clojurescript-blog.html" title="Next Post: clojurescript-blog">clojurescript-blog &raquo;</a>
         
       </p>
     </footer>
@@ -685,18 +685,15 @@ might be a good technique to try.
       $("#comments").append("<div class='comment'><div class='commentheader'><div class='commentgravatar'>"
                                  + '<img src="' + cavatarlink + '" alt="" width="20" height="20">'
                                  + "</div><a class='commentuser' href=\""+ cuserlink + "\">"
-                                 + cuser + "</a><a class='commentdate' href=\"" + clink + "\">"
-                                 + cdate + "</a></div><div class='commentbody'>" + cbody + "</div></div>");
+                                 + cuser + "</a> on <a class='commentdate' href=\"" + clink + "\">"
+                                 + cdate + "</a> said:</div><div class='commentbody'>" + cbody + "</div></div>");
     }
   }
 
-  $.ajax("https://api.github.com/repos/cbilson/cbilson.github.com/issues/1/comments", {
-    headers: {Accept: "application/vnd.github.full+json"},
-    dataType: "json",
-    success: function(msg){
-      loadComments(msg);
-   }
-  });
+  $.ajax({url:'https://api.github.com/repos/cbilson/cbilson.github.com/issues/1/comments',
+          headers: {Accept: "application/vnd.github.full+json"},
+          type: "json",
+          success: loadComments});
 </script>
 
   </section>
@@ -720,6 +717,10 @@ might be a good technique to try.
   
 </aside>
 
+<script src='../javascripts/site.js'></script>
+<script type='text/javascript'>
+scripts.comments.load_comments('1');
+</script>
 
     </div>
   </div>
@@ -744,16 +745,6 @@ might be a good technique to try.
   </script>
 
 
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
 
 
 

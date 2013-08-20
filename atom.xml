@@ -4,7 +4,7 @@
   <title><![CDATA[Chris's Blog]]></title>
   <link href="http://cbilson.github.io//atom.xml" rel="self"/>
   <link href="http://cbilson.github.io//"/>
-  <updated>2013-08-15T20:03:51-07:00</updated>
+  <updated>2013-08-19T20:19:21-07:00</updated>
   <id>http://cbilson.github.io//</id>
   <author>
     <name><![CDATA[Chris Bilson]]></name>
@@ -12,6 +12,361 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[clojurescript-blog]]></title>
+    <link href="http://cbilson.github.io//blog/2013-08-16-clojurescript-blog.html"/>
+    <updated>2013-08-16T00:00:00-07:00</updated>
+    <id>http://cbilson.github.io//blog/clojurescript-blog</id>
+    <content type="html"><![CDATA[<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Abstract</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I&#8217;ve never been very good at blogging, for many, many reasons. Perhaps
+one of them was just that it didn&#8217;t sound interesting to me. Maybe if
+there was a way to incorporate something I am really &#8220;into&#8221; - like
+clojure! - into my blog, I would have more fun doing it, and do it
+more.
+</p>
+
+<p>
+<!-- more -->
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Introduction</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Several years ago, I learned that you can run a blog from a github
+account. I immediately upgraded to a paid account&#x2026;and then
+never really got around to actually blogging from github. Maybe I am
+too lazy&#x2026;or maybe I just hadn&#8217;t figured out a way to incorporate
+into my blogging idea anything that really interests me.
+</p>
+
+<p>
+I really love programming in clojure. I have a lot of experience
+programming in javascript (let&#8217;s just say, I remember being scared
+that I was going to be jobless when I saw all the cool things you
+could do with &#8220;DHTML&#8221; (does anyone even say that anymore?) and
+javascript when IE_4_ came out,) but I&#8217;ve never really enjoyed
+javascript. It misses the mark with me on so many fundamental things
+I want in a programming language. There are certainly things I like
+about it, but it has almost as many quirks as C&#x2013;, and I can&#8217;t even
+look at the disassembly.
+</p>
+
+<p>
+I ran into a problem the other day trying to incorporate github
+comments into my blog. I had to dig into the javascript to figure it
+out. It was a simple problem, but&#x2026;come on. What a stupid
+problem to have to run into. The github API is <b>so</b> cool and&#x2026;and
+<b>this</b> is how we use it. I think this is why we can&#8217;t have nice
+*things.
+</p>
+
+<p>
+How about I rewrite some of this javascript in clojurescript? I can
+do it right. Proper namespaces. High order programming. Macros, if I
+need them. Sane state. Maybe I can even use core.async! Hells yeah!
+Let&#8217;s go!
+</p>
+
+<p>
+Note to squeamish readers: if you are thinking &#8220;core.async&#x2026;for a
+blog?! o_O&#8221;, this blog post probably isn&#8217;t for you. Move along
+now. Go back to reading little snippets of what other people did on
+hacker news. This blog post is about a full blown, geeky, insane,
+anti-pragmatic, technology bender-trip. I don&#8217;t even know if <b>I</b> am
+going to make it back alive. I can&#8217;t vouch for your safety, and if
+you are not down for this type of thing, it&#8217;s best that we part ways
+now before someone gets hurt. C ya!
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Methods</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">How the blog works</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Octopress.
+</p>
+
+<p>
+Source is in &#8216;source&#8217; directory.
+</p>
+
+<p>
+&#8217;_includes&#8217; get included
+in templates for different types of pages.
+</p>
+
+<p>
+Source is all on &#8216;source&#8217;
+branch. I write drafts on branches and merge them into source when I
+want to &#8220;publish&#8221; them.
+</p>
+
+<p>
+You run `rake deploy&#8217;, it builds the website into a directory called
+`_deploy&#8217;, checks it in as branch master, which is what github is
+setup to render.
+</p>
+
+<p>
+I write the blog posts in org-mode because I like it. I use an emacs
+plugin, org-octopress, which let&#8217;s me publish org-posts into
+octopress-friendly HTML with YAML front-matter.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">What&#8217;s the client-side code look like now?</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+All the javascript in the blog website now is either in templates
+(i.e. script blocks that get included into the page) or src&#8217;d in from
+the javascripts folder or from other places. I am slightly offended by
+how messy it is, with different plugins adding their own dependencies,
+and libraries that have identically named functions as other libraries
+&#8220;for compatibility.&#8221; Not trying to be critical (hell, it was
+free&#x2026;what&#8217;s to complain about), but this kind of thing really turns
+me off.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">How can we do better?</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Let&#8217;s create a new leiningen project. I thought I remember reading
+about some cool new leiningen template that would create a project
+that had everything all set up for you, but a quick google search
+yields nothing like what I want: I just want to do clojurescript, no
+ring, no website, no server side stuff. Why am I even bothering to
+look, this is so simple.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh" id="create-the-project"><span style="color: #8B8989; font-style: italic;"># </span><span style="color: #8B8989; font-style: italic;">in my blog's source directory</span>
+$ lein new script
+...
+$ $<span style="color: #D8FA3C;">EDITOR</span> scripts/project.clj
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-clojure" id="touch-up-the-project-file-and-add-lein-cljsbuild-plugin">(<span style="color: #FBDE2D;">defproject</span> <span style="color: #ff1493;">scripts</span> <span style="color: #61CE3C;">"0.1.0-SNAPSHOT"</span>
+  <span style="color: #4c83ff;">:description</span> <span style="color: #61CE3C;">"Client side code for my blog"</span>
+  <span style="color: #4c83ff;">:url</span> <span style="color: #61CE3C;">"http://cbilson.github.com/cbilson.github.com/"</span>
+  <span style="color: #4c83ff;">:license</span> {<span style="color: #4c83ff;">:name</span> <span style="color: #61CE3C;">"Eclipse Public License"</span>
+            <span style="color: #4c83ff;">:url</span> <span style="color: #61CE3C;">"http://www.eclipse.org/legal/epl-v10.html"</span>}
+  <span style="color: #4c83ff;">:dependencies</span> [[org.clojure/clojure <span style="color: #61CE3C;">"1.5.1"</span>]
+                 [org.clojure/clojurescript <span style="color: #61CE3C;">"0.0-1820"</span>]]
+  <span style="color: #4c83ff;">:plugins</span> [[lein-cljsbuild <span style="color: #61CE3C;">"0.3.2"</span>]]
+  <span style="color: #4c83ff;">:cljsbuild</span>
+  {<span style="color: #4c83ff;">:builds</span>
+   [{<span style="color: #4c83ff;">:source-paths</span> [<span style="color: #61CE3C;">"src-cljs"</span>]
+     <span style="color: #4c83ff;">:compiler</span>
+     {<span style="color: #4c83ff;">:output-to</span> <span style="color: #61CE3C;">"../javascripts/site.js"</span>
+      <span style="color: #4c83ff;">:optimizations</span> <span style="color: #4c83ff;">:whitespace</span>
+      <span style="color: #4c83ff;">:pretty-print</span> true}}]})
+</pre>
+</div>
+
+<p>
+Let&#8217;s replace the script block I was mad at earlier
+</p>
+
+<pre class="example">
+&lt;script type="text/javascript" src="http://datejs.googlecode.com/svn/trunk/build/date-en-US.js"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+
+  function loadComments(data) {
+    for (var i=0; i&lt;data.length; i++) {
+      var cuser = data[i].user.login;
+      var cuserlink = "https://www.github.com/" + data[i].user.login;
+      var clink = "https://github.com/cbilson/cbilson.github.com/issues/#issuecomment-"
+                                 + data[i].url.substring(data[i].url.lastIndexOf("/")+1);
+      var cbody = data[i].body_html;
+      var cavatarlink = data[i].user.avatar_url;
+      var cdate = Date.parse(data[i].created_at).toString("yyyy-MM-dd HH:mm:ss");
+
+      $("#comments").append("&lt;div class='comment'&gt;&lt;div class='commentheader'&gt;&lt;div class='commentgravatar'&gt;"
+                                 + '&lt;img src="' + cavatarlink + '" alt="" width="20" height="20"&gt;'
+                                 + "&lt;/div&gt;&lt;a class='commentuser' href=\""+ cuserlink + "\"&gt;"
+                                 + cuser + "&lt;/a&gt; on &lt;a class='commentdate' href=\"" + clink + "\"&gt;"
+                                 + cdate + "&lt;/a&gt; said:&lt;/div&gt;&lt;div class='commentbody'&gt;" + cbody + "&lt;/div&gt;&lt;/div&gt;");
+    }
+  }
+
+  $.ajax({url:'https://api.github.com/repos/cbilson/cbilson.github.com/issues//comments',
+          headers: {Accept: "application/vnd.github.full+json"},
+          type: "json",
+          success: loadComments});
+&lt;/script&gt;
+</pre>
+
+<div class="org-src-container">
+
+<pre class="src src-clojure" id="after:-the-script-rewritten-in-clojurescript">(<span style="color: #FBDE2D;">ns</span> scripts.comments
+  (<span style="color: #4c83ff;">:require</span> [goog.dom <span style="color: #4c83ff;">:as</span> dom]
+            [<span style="color: #919191;">goog.net.XhrIo</span> <span style="color: #4c83ff;">:as</span> xhr]
+            [<span style="color: #919191;">goog.Uri</span> <span style="color: #4c83ff;">:as</span> uri]
+            [clojure.browser.repl <span style="color: #4c83ff;">:as</span> repl]))
+
+(<span style="color: #FBDE2D;">defn</span> <span style="color: #ff1493;">format-comment</span> [issue-id comment]
+  (<span style="color: #FBDE2D;">let</span> [cuser (<span style="color: #FBDE2D;">..</span> comment -user -login)
+        cuserlink (<span style="color: #FF6400;">str</span> <span style="color: #61CE3C;">"https://www.github.com/"</span> cuser)
+        clink (<span style="color: #FF6400;">str</span> <span style="color: #61CE3C;">"https://github.com/cbilson/cbilson.github.com/issues/"</span> issue-id <span style="color: #61CE3C;">"#issuecomment-"</span> (<span style="color: #919191;">.-id</span> comment))
+        cbody (.-body-html comment)
+        cavatarlink (<span style="color: #FBDE2D;">..</span> comment -user -avatar-url)
+        cdate (<span style="color: #FBDE2D;">..</span> js/<span style="color: #919191;">Date</span> (parse (.-created-at comment)) (<span style="color: #919191;">toString</span> <span style="color: #61CE3C;">"yyyy-MM-dd HH:mm:ss"</span>))]
+    (<span style="color: #FF6400;">str</span> <span style="color: #61CE3C;">"&lt;div class='comment'&gt;&lt;div class='commentheader'&gt;"</span>
+         <span style="color: #61CE3C;">"&lt;div class='commentgravatar'&gt;"</span>
+         <span style="color: #61CE3C;">"&lt;img src='"</span> cavatarlink <span style="color: #61CE3C;">"' alt='' width='20' height='20'&gt;&lt;/img&gt;"</span>
+         <span style="color: #61CE3C;">"&lt;/div&gt;"</span>
+         <span style="color: #61CE3C;">"&lt;a class='commentuser' href='"</span> cuserlink <span style="color: #61CE3C;">"'&gt;"</span> cuser <span style="color: #61CE3C;">"&lt;/a&gt;"</span>
+         <span style="color: #61CE3C;">"on &lt;a class='commentdate' href='"</span> clink <span style="color: #61CE3C;">"'&gt;"</span> cdate <span style="color: #61CE3C;">"&lt;/a&gt;"</span>
+         <span style="color: #61CE3C;">"said: &lt;div class='commentbody'&gt;"</span> cbody <span style="color: #61CE3C;">"&lt;/div&gt;"</span>
+         <span style="color: #61CE3C;">"&lt;/div&gt;"</span>)))
+
+(<span style="color: #FBDE2D;">defn</span> <span style="color: #ff1493;">show-comments</span> [comments]
+  (<span style="color: #FBDE2D;">-&gt;&gt;</span> comments
+       (<span style="color: #FF6400;">map</span> (<span style="color: #FF6400;">partial</span> format-comment (<span style="color: #919191;">.-id</span> comments)))
+       (<span style="color: #FF6400;">map</span> dom/<span style="color: #919191;">htmlToDocumentFragment</span>)
+       (<span style="color: #FF6400;">map</span> (<span style="color: #FF6400;">partial</span> dom/<span style="color: #919191;">appendChild</span> (dom/<span style="color: #919191;">getElement</span> <span style="color: #61CE3C;">"comments"</span>)))))
+
+(<span style="color: #FBDE2D;">defn</span> <span style="color: #ff1493;">send</span> [url callback headers content timeout]
+  (<span style="color: #FBDE2D;">let</span> [uri (<span style="color: #919191;">goog.Uri.</span> url)
+        headers (clj-&gt;js headers)
+        content (clj-&gt;js content)]
+    (xhr/send uri callback <span style="color: #61CE3C;">"GET"</span> content headers timeout)))
+
+(<span style="color: #FBDE2D;">defn</span> <span style="color: #4c83ff;">^:export</span> <span style="color: #ff1493;">load-comments</span> [issue-id]
+  (<span style="color: #FBDE2D;">let</span> [url (<span style="color: #FF6400;">str</span> <span style="color: #61CE3C;">"https://api.github.com/repos/cbilson/cbilson.github.com/issues/"</span>
+                 issue-id <span style="color: #61CE3C;">"/comments"</span>)
+        uri (<span style="color: #919191;">goog.Uri.</span> url)]
+    (<span style="color: #FF6400;">send</span> uri show-comments {<span style="color: #61CE3C;">"Accept"</span> <span style="color: #61CE3C;">"application/vnd.github.full+json"</span>} nil 30000)))
+
+(repl/connect <span style="color: #61CE3C;">"http://localhost:9000/repl"</span>)
+</pre>
+</div>
+
+<p>
+Since the script is no longer in the page, we can&#8217;t inject the front
+matter through the template like we did in the javascript version. We
+need the page to pass this in:
+</p>
+
+<pre class="example">
+&lt;script type='text/javascript'&gt;
+scripts.comments.load_comments({{page.commentIssueId}})]);
+&lt;/script&gt;
+</pre>
+
+<p>
+That&#8217;s pretty close to a line for line translation. I can get rid of
+jQuery/Zepto and a few other dependencies, but not datejs and if you
+looked at the javascript that is generated for this little tiny bit
+of clojurescript, you might get the feeling that I have traded a
+small elephant for a whale, in terms of code size.
+</p>
+
+<p>
+But who cares. Let&#8217;s geek out some more.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">Dialing up the geek</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+There are a lot of strings in the clojure script above. What are
+those strings, anyway? Aren&#8217;t they just data? The strings are
+completely hiding the structure of the data. Why don&#8217;t we ditch them
+for clojure data structures, and write a function that transforms
+them into a DOM fragment to append to the doc&#x2026;
+</p>
+
+<p>
+TODO: put an example here
+</p>
+
+<p>
+There are actually great libraries available to do a lot of this for
+us, like dommyor enfocus. I would probably use one of
+those if I were doing this for work, but here it would be more fun to
+focus on core clojurescript stuff.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">Dynamic Comments</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+What if I leave the page open for days and there are new
+comments. Let&#8217;s add something to poll the comments on github
+periodically to check for changes.
+</p>
+
+<p>
+TODO: Github API Limits
+</p>
+
+<p>
+TODO: add core.async dependency
+</p>
+
+<p>
+TODO: code
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6">Just in Time</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+When I leave the page open for days, I don&#8217;t actually care about
+comments most of the time. When I really care about them is when I am
+about to make a comment myself. If I am in the middle of typing a
+comment, it would be better if it checked for updates more frequently.
+</p>
+
+<p>
+TODO: code
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Conclusion</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Adding clojurescript to a static web site is fun and opens the mind
+up to lots of possibilities for using clojurescript in more practical
+settings. core.async in particular is a really neat library that
+takes event driven browser-apps up to the next level.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Further Research</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+It would be fun to find a project to use with core.async and web
+sockets.
+</p>
+</div>
+</div>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Research Day]]></title>

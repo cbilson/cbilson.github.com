@@ -15,3 +15,7 @@ source/blog/*.html
 source/blog/*.pdf
 source/blog/*.tex
 auto
+/source/javascripts/site.js
+/source/scripts/out/
+/source/scripts/repl/
+/source/scripts/target/

@@ -18,6 +18,7 @@ deploy_branch  = "master"
 
 public_dir      = "public"    # compiled site directory
 source_dir      = "source"    # source file directory
+cljs_dir        = "#{source_dir}/scripts"
 blog_index_dir  = 'source'    # directory for your blog's index page (if you put your index in source/blog/index.html, set this to 'source/blog')
 deploy_dir      = "_deploy"   # deploy directory (for Github pages deployment)
 stash_dir       = "_stash"    # directory to stash posts for speedy generation
@@ -248,7 +249,7 @@ desc "deploy public directory to github pages"
 multitask :push do
   puts "## Deploying branch to Github Pages "
   puts "## Pulling any updates from Github Pages "
-  cd "#{deploy_dir}" do 
+  cd "#{deploy_dir}" do
     system "git pull"
   end
   (Dir["#{deploy_dir}/*"]).each { |f| rm_rf(f) }
@@ -298,6 +299,20 @@ task :set_root_dir, :dir do |t, args|
     rm_rf public_dir
     mkdir_p "#{public_dir}#{dir}"
     puts "## Site's root directory is now '/#{dir.sub(/^\//, '')}' ##"
+  end
+end
+
+desc 'compile clojurescript'
+task :cljs do
+  cd cljs_dir do
+    system 'lein cljsbuild once'
+  end
+end
+
+desc 'listen for cljs brepl'
+task :brepl do
+  cd cljs_dir do
+    system 'lein trampoline cljsbuild repl-listen'
   end
 end
 
@@ -390,3 +405,4 @@ task :list do
   puts "Tasks: #{(Rake::Task.tasks - [Rake::Task[:list]]).join(', ')}"
   puts "(type rake -T for more detail)\n\n"
 end
+

@@ -1,0 +1,211 @@
+#+TITLE: Running Clojure In Azure - Part 1
+#+DATE: 2013-08-20
+#+SETUPFILE: ~/src/blog-stuff/blog/setup.org
+#+JEKYLL_LAYOUT: post
+#+JEKYLL_CATEGORIES:
+#+JEKYLL_PUBLISHED: true
+#+JEKYLL_COMMENTISSUEID: 3
+
+* Abstract
+
+Windows Azure is a popular cloud platform for .NET applications. It
+has great integration with the tool .NET developers can't work
+without: Visual Studio.
+
+It also works with other languages and runtimes, however:
+node.js[fn:1], ...
+
+TODO: List more languages
+
+How about clojure?
+
+{{{more}}}
+
+* Introduction
+
+I mostly work with .NET in my day job, and when I do, often find
+myself missing the ability to rapidly and interactively prototype
+things in clojure.
+
+Since Azure can run java, how hard would it be to create a web
+role[fn:2] or a worker role[fn:3] in clojure?
+
+* Methods
+
+There are a few things you need to do to get started using Azure. I
+am doing this in OSX, but you can do all of this on linux and (duh!)
+windows as well.
+
+** Prerequisites
+
+*** Azure Account
+
+    You can start a free trial here:
+    http://www.windowsazure.com/en-us/pricing/free-trial/?WT.mc_id=azurebg_us_sem_google_br_devcenter_nontest_trialpage
+
+    If you have an MSDN account, you get a $150/month credit.
+
+*** Azure Command Line Tools
+
+    In order to deploy and manage applications in Azure, you need to
+    install the "Command Line Tools." Go to [[http://www.windowsazure.com/en-us/downloads/][The Azure Downloads page]] to
+    download the appropriate installer for your development OS.
+
+*** Azure SDK
+
+    Luckily, the azure sdk is available through maven, making using it
+    from leiningen really easy:
+
+#+BEGIN_SRC sh
+  $ lein new hello_azure
+  ...
+#+END_SRC
+
+    Next, I add the SDK to the dependencies[fn:4]:
+#+BEGIN_SRC clojure
+  (defproject hello-azure "0.1.0-SNAPSHOT"
+    :description "FIXME: write description"
+    :url "http://example.com/FIXME"
+    :license {:name "Eclipse Public License"
+              :url "http://www.eclipse.org/legal/epl-v10.html"}
+    :dependencies [[org.clojure/clojure "1.5.1"]
+                   [com.microsoft.windowsazure/microsoft-windowsazure-api "0.4.4"]])
+#+END_SRC
+
+    This gives you access to the APIs you will need for storage, access
+    control, etc. You can find javadocs here:
+    http://dl.windowsazure.com/javadoc/
+
+*** Storage Account
+
+    When you use Azure storage, you use one or many storage accounts. A
+    storage account is like a namespace and a set of credentials for
+    using azure storage.
+
+    This article covers how to create a storage account in the management
+    portal and gives an overview of blob storage:
+    http://www.windowsazure.com/en-us/develop/java/how-to-guides/blob-storage/
+
+** Getting Started
+
+   So now we have a project started, a storage account, and the command
+   line tools.
+
+   There are several ways to build applications with azure: web sites,
+   cloud services, VMs, ...[fn:5]. I have a little more experience
+   building web sites and cloud services, so I am going to focus on that for now.
+
+   Let's build a cloud service that polls an azure queue for work to do. I
+   am going to send it a queue message with a blob url. Inside of the
+   blob will be a CSV file with a bunch of records. The service is going
+   to partition the file into smaller files by date, and put those in
+   blob storage. In the real application I am thinking of, that's just
+   the first step, but it' enough of an example for now, to see what it
+   looks like to build a worker role in clojure.
+
+   To deploy a service, I am going to need a "subscription file."  You
+   can get one for your account by using the command line tools or going
+   to the management website. From the command line:
+
+#+BEGIN_SRC sh
+  $ azure account download
+  nfo:    Executing command account download
+  info:    Launching browser to http://go.microsoft.com/fwlink/?LinkId=254432
+  help:    Save the downloaded file, then execute the command
+  help:      account import <file>
+  info:    account download command OK
+
+  # this brings up a browser window, downloads a file, which I then import
+  # NOTE: your publishsettings filename will be different
+
+  $ azure account import ~/Downloads/Visual\ Studio\ Premium\ with\ MSDN-8-20-2013-credentials.publishsettings
+  info:    Executing command account import
+  info:    Found subscription: Visual Studio Premium with MSDN
+  info:    Setting default subscription to: Visual Studio Premium with MSDN
+  info:    Use "azure account set" to change to a different one.
+  info:    Setting service endpoint to: https://management.core.windows.net/
+  warn:    The '/Users/cbilson/Downloads/Visual Studio Premium with MSDN-8-20-2013-credentials.publishsettings' file contains sensitive information.
+  warn:    Remember to delete it now that it has been imported.
+  info:    Account publish settings imported successfully
+  + Verifying account
+  info:    account import command OK
+
+  # following advice, I delete the publishsettings file
+  $ rm ~/Downloads/*.publishsettings
+#+END_SRC
+
+   Now I should be able to deploy with the command line tools. I already
+   have a compilable clojure project. Why not deploy that?
+
+   First, I need to create the service in Azure:
+
+#+BEGIN_SRC sh
+  $ azure service create hello-azure-cbilson --location 'West US'
+  info:    Executing command service create
+  + Creating Cloud Service
+  data:    Cloud Service Name hello-azure-cbilson
+  info:    service create command OK
+#+END_SRC
+
+   The service name you choose (`hello-azure-cbilson' above) needs to be
+   unique because it will be the first part of the DNS name of the
+   service. If you don't specify a location (as I did above with `West
+   US') you will be prompted with a list of options.
+
+   Next, we need to create three files - a service definition, a
+   service configuration, and finally, a service package[fn:6]:
+
+#+name: the service definition
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+
+#+name: the service configuration
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+
+As for the service package...that parts kind of a pain in the
+ass. It's basically an archive that should contain the jar(s) we want
+to deploy, along with the other two files and a bunch of other XML
+files. It's signed and, on windows, it's usually generated with a tool
+called cspack. cspack is only available on any platform but windows.
+
+I went ahead and made a deployment package using eclipse on
+windows. This package will include some other stuff you need to run
+java programs, like the JRE. You can actually modify cspkg files even
+if you are not running on windows by unzipping them, recalculating
+some hashes, then rezipping them.
+
+Having a windows VM around, both for packing, and potentially testing
+in the emulator, is a really good idea, until Microsoft makes it
+possible to do all these things outside of windows (and hopefully,
+without any special tools.)
+
+You can find more information about how to build java packages on
+windows [[http://java.interoperabilitybridges.com/articles/deploying-a-java-application-to-windows-azure-with-command-line-ant][here]], and a description of how to do the unpacking/repacking
+stuff [[http://msdn.microsoft.com/en-us/library/windowsazure/jj151532.aspx][here]]. I'll get into making changes to the cspkg a little later
+in this post.
+
+For now, I have a cspkg file called WorkerRoleDeployment.cspkg which
+I will be using for the rest of this post. You can get it from
+
+TODO: Dropbox link to cspkg
+
+* Footnotes
+
+[fn:1] http://www.windowsazure.com/en-us/develop/nodejs/tutorials/getting-started/
+
+[fn:2]
+
+[fn:3]
+
+[fn:4] You can find a list of available version numbers on Azure's
+  Central Repository page: http://search.maven.org/#browse%7C-589510877
+
+[fn:5] http://www.windowsazure.com/en-us/develop/net/fundamentals/intro-to-windows-azure/
+
+[fn:6] The schema for the service definition and service configuration
+can be found [[http://msdn.microsoft.com/en-us/library/windowsazure/gg557552.aspx][here]] and [[http://msdn.microsoft.com/en-us/library/windowsazure/ee758710.aspx][here]] respectively.
+
+[fn:7] https://github.com/c9/azure-packager-node
